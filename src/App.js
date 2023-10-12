@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles.css";
 
-function App() {
+const Magic8Ball = () => {
+  const answers = [
+    "Yes",
+    "No",
+    "Maybe",
+    "Ask\nagain\nlater",
+    "Cannot\npredict\nnow",
+    "Outlook\nnot so\ngood",
+    "Definitely\nnot",
+    "Definitely\nyes",
+    "I have\nmy doubts",
+    "The stars\nsay no",
+    "The stars\nsay yes",
+    "It is\ncertain"
+  ];
+
+  const [answer, setAnswer] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleAskQuestion = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      const randomAnswer = answers[randomIndex].split("\n").map((line, index) => (
+        <div key={index}>{line}</div>
+      ));
+      setAnswer(randomAnswer);
+      setIsVisible(true);
+    }, 500);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className={`orb`}>
+      <div className={`orb2`}></div>
+      <div className={`orb3`}></div>
+      <div className={`orb4`}></div>
+          <div className={`triangle ${isVisible ? "visible" : ""}`}></div>
+          <div className={`text ${isVisible ? "visible" : ""}`} style={{ fontSize: "0.75rem" }}>
+          {answer}
+        </div>
+      </div>
+      <button className="button" onClick={handleAskQuestion}>
+        Ask a Question
+      </button>
     </div>
   );
-}
+};
 
-export default App;
+export default Magic8Ball;
