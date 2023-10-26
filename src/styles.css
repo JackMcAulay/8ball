@@ -14,41 +14,16 @@ body {
 .orb {
   width: 310px;
   height: 310px;
-  background-color: white;
+  background-color: black;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 5px solid white; 
 }
 
 .orb2 {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  position: absolute;
-  background-color: black;
-}
-
-.orb3 {
-  width: 185px;
-  height: 185px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  position: absolute;
-  background-color: white;
-}
-
-.orb4 {
   width: 175px;
   height: 175px;
   border-radius: 50%;
@@ -59,6 +34,7 @@ body {
   z-index: 2;
   position: absolute;
   background-color: lime;
+  border: 5px solid white; 
 }
 
 .triangle {
@@ -107,4 +83,16 @@ body {
   to {
     opacity: 1;
   }
+}
+
+@keyframes shakeAnimation {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(5px); }
+}
+
+.shake {
+  animation: shakeAnimation 0.3s ease infinite; /* Adjust the duration and easing as needed */
 }
